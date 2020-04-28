@@ -1,7 +1,7 @@
 # trans
 A multi-terminal file transfer platform
 
-多端文件传输系统
+多端文件传输平台
 
 我在win，linux，手机端都有收发文件的需求。
 使用了sendAnywhere，网速超慢。

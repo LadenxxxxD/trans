@@ -82,3 +82,4 @@ export default new Vuex.Store({
 })
 
 console.log("end");
+console.log("end");

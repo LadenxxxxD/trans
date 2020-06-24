@@ -65,8 +65,7 @@ export default new Vuex.Store({
                 units = " MB/s";
             }
             speed = speed.toFixed(1);
-
-            state.loadInfo.speed = speed + units;
+            (speed === 'Infinity') ? state.loadInfo.speed = '秒传' : state.loadInfo.speed = speed + units;
             state.loadInfo.previousTimeStamp = nowTimeStamp;
             state.loadInfo.loadPercentage = loadPercentage;
             state.loadInfo.fileLoaded = progressEvent.loaded;
@@ -80,5 +79,3 @@ export default new Vuex.Store({
         }
     }
 })
-
-console.log("end");

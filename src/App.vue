@@ -1,5 +1,5 @@
 <template>
-	<div id="root" @dragover="dragOver" @drop="dropDownload">
+	<div id="root" @dragover.stop.prevent @drop="dropDownload">
 		<div class="windows">
 			<div class="title-bar">
 				<div class="dots"></div>
@@ -7,7 +7,12 @@
 				<div class="dots"></div>
 				<div class="title-text">user@{{ siteUrl }}</div>
 			</div>
-			<div id="content" class="content" @dragover="dragOver" @drop="dropUpload">
+			<div
+				id="content"
+				class="content"
+				@dragover.stop.prevent
+				@drop="dropUpload"
+			>
 				<file-icon></file-icon>
 				<div class="card download-card">
 					接收文件
@@ -108,17 +113,17 @@ export default {
 			this.uploadFiles = [...this.uploadFiles, ...e.target.files];
 			this.asyncUpload();
 		},
-		prevent(event) {
-			event.preventDefault();
-			event.stopPropagation();
-		},
+		// prevent(event) {
+		// 	event.preventDefault();
+		// 	event.stopPropagation();
+		// },
 		//为了ondrop起作用
-		dragOver(event) {
-			this.prevent(event);
-		},
+		// dragOver(event) {
+		// 	this.prevent(event);
+		// },
 		dropUpload(event) {
 			let that = this;
-			this.prevent(event);
+			// this.prevent(event);
 			if (!this.$store.state.isDownloadDrag) {
 				this.getLocalFile(event);
 				this.asyncUpload();
@@ -151,7 +156,7 @@ export default {
 				});
 		},
 		dropDownload(event) {
-			this.prevent(event);
+			// this.prevent(event);
 			if (this.$store.state.isDownloadDrag) {
 				let pwd = this.getFilePWD();
 				this.download(pwd);
